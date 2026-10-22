@@ -1,0 +1,91 @@
+{
+  "edition": "FREE",
+  "pull_date": "2026-10-13",
+  "dataset": "22u3-xenr Building Violations (data.cityofchicago.org)",
+  "filter": "violation_status = OPEN AND violation_date > 2026-07-13",
+  "window_start": "2026-07-13",
+  "window_end": "2026-10-13",
+  "kept_categories": [
+    "STRUCTURAL",
+    "ENVELOPE"
+  ],
+  "properties": 1265,
+  "columns": 15,
+  "kept_violation_rows_total": 3518,
+  "kept_violation_rows_structural": 1998,
+  "kept_violation_rows_envelope": 1520,
+  "kept_violation_rows_mechanical": 0,
+  "properties_by_primary_category": {
+    "STRUCTURAL": 1000,
+    "ENVELOPE": 265
+  },
+  "properties_with_3plus_open_work_violations": 566,
+  "max_open_work_violations_on_one_property": 13,
+  "earliest_violation_date": "2026-07-14",
+  "latest_violation_date": "2026-10-09",
+  "top_10_violation_types": [
+    {
+      "violation_type": "REPAIR EXTERIOR WALL",
+      "properties": 441
+    },
+    {
+      "violation_type": "REPAIR PORCH SYSTEM",
+      "properties": 272
+    },
+    {
+      "violation_type": "REPAIR FENCE",
+      "properties": 214
+    },
+    {
+      "violation_type": "REPAIR EXTERIOR STAIR",
+      "properties": 209
+    },
+    {
+      "violation_type": "REPAIR INTERIOR WALLS/CEILING",
+      "properties": 208
+    },
+    {
+      "violation_type": "REPLCE WINDOW PANES, PLEXGLAS",
+      "properties": 175
+    },
+    {
+      "violation_type": "MAINTAIN WINDOW",
+      "properties": 170
+    },
+    {
+      "violation_type": "REPAIR/REBUILD GARAGE OR SHED",
+      "properties": 164
+    },
+    {
+      "violation_type": "CHIMNEY",
+      "properties": 131
+    },
+    {
+      "violation_type": "REPAIR EXTERIOR DOOR",
+      "properties": 130
+    }
+  ],
+  "distinct_violation_types": 64,
+  "duplicate_addresses": 0,
+  "blank_cells_per_column": {
+    "property_key": 0,
+    "address": 0,
+    "city": 0,
+    "state": 0,
+    "open_work_violation_count": 0,
+    "primary_category": 0,
+    "structural": 0,
+    "envelope": 0,
+    "mechanical": 0,
+    "violation_types": 0,
+    "earliest_open_date": 0,
+    "latest_open_date": 0,
+    "latitude": 1,
+    "longitude": 1,
+    "source_url": 0
+  },
+  "raw_rows_scanned": 11650,
+  "repair_type_rows_kept": 3518,
+  "generated_at": "2026-10-20T14:32:34",
+  "generator": "tools/make_free_edition.py"
+}
