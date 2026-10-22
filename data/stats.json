@@ -1,28 +1,28 @@
 {
   "edition": "FREE",
-  "pull_date": "2026-10-13",
+  "pull_date": "2026-10-22",
   "dataset": "22u3-xenr Building Violations (data.cityofchicago.org)",
-  "filter": "violation_status = OPEN AND violation_date > 2026-07-13",
-  "window_start": "2026-07-13",
-  "window_end": "2026-10-13",
+  "filter": "violation_status = OPEN AND violation_date > 2026-07-22",
+  "window_start": "2026-07-22",
+  "window_end": "2026-10-22",
   "kept_categories": [
     "STRUCTURAL",
     "ENVELOPE"
   ],
-  "properties": 1265,
+  "properties": 1224,
   "columns": 15,
-  "kept_violation_rows_total": 3518,
-  "kept_violation_rows_structural": 1998,
-  "kept_violation_rows_envelope": 1520,
+  "kept_violation_rows_total": 3463,
+  "kept_violation_rows_structural": 1980,
+  "kept_violation_rows_envelope": 1483,
   "kept_violation_rows_mechanical": 0,
   "properties_by_primary_category": {
-    "STRUCTURAL": 1000,
-    "ENVELOPE": 265
+    "STRUCTURAL": 970,
+    "ENVELOPE": 254
   },
-  "properties_with_3plus_open_work_violations": 566,
+  "properties_with_3plus_open_work_violations": 559,
   "max_open_work_violations_on_one_property": 13,
-  "earliest_violation_date": "2026-07-14",
-  "latest_violation_date": "2026-10-09",
+  "earliest_violation_date": "2026-07-23",
+  "latest_violation_date": "2026-10-21",
   "top_10_violation_types": [
     {
       "violation_type": "REPAIR EXTERIOR WALL",
@@ -30,42 +30,42 @@
     },
     {
       "violation_type": "REPAIR PORCH SYSTEM",
-      "properties": 272
+      "properties": 261
     },
     {
       "violation_type": "REPAIR FENCE",
-      "properties": 214
-    },
-    {
-      "violation_type": "REPAIR EXTERIOR STAIR",
-      "properties": 209
+      "properties": 210
     },
     {
       "violation_type": "REPAIR INTERIOR WALLS/CEILING",
-      "properties": 208
+      "properties": 198
+    },
+    {
+      "violation_type": "REPAIR EXTERIOR STAIR",
+      "properties": 197
     },
     {
       "violation_type": "REPLCE WINDOW PANES, PLEXGLAS",
-      "properties": 175
+      "properties": 176
     },
     {
       "violation_type": "MAINTAIN WINDOW",
-      "properties": 170
+      "properties": 168
     },
     {
       "violation_type": "REPAIR/REBUILD GARAGE OR SHED",
-      "properties": 164
+      "properties": 157
     },
     {
       "violation_type": "CHIMNEY",
-      "properties": 131
+      "properties": 136
     },
     {
-      "violation_type": "REPAIR EXTERIOR DOOR",
-      "properties": 130
+      "violation_type": "PARAPET",
+      "properties": 122
     }
   ],
-  "distinct_violation_types": 64,
+  "distinct_violation_types": 65,
   "duplicate_addresses": 0,
   "blank_cells_per_column": {
     "property_key": 0,
@@ -84,8 +84,8 @@
     "longitude": 1,
     "source_url": 0
   },
-  "raw_rows_scanned": 11650,
-  "repair_type_rows_kept": 3518,
-  "generated_at": "2026-10-20T14:32:34",
+  "raw_rows_scanned": 11425,
+  "repair_type_rows_kept": 3463,
+  "generated_at": "2026-10-22T19:30:58",
   "generator": "tools/make_free_edition.py"
 }

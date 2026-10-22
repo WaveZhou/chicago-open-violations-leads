@@ -1,0 +1,56 @@
+Chicago Open Building Violations - QA report
+Generated: 2026-10-22T19:30:01
+Source: data.cityofchicago.org dataset 22u3-xenr (Building Violations)
+Filter: violation_status = OPEN, violation_date > 2026-07-22
+Kept categories: STRUCTURAL, ENVELOPE (MECHANICAL excluded)
+
+Raw violation rows scanned : 11425
+Construction-relevant rows : 3463
+Unique properties (output) : 1224
+
+Kept category mix (rows):
+  STRUCTURAL   1980
+  ENVELOPE     1483
+
+Blank cells per column:
+  property_key               0
+  address                    0
+  city                       0
+  state                      0
+  open_work_violation_count  0
+  primary_category           0
+  structural                 0
+  envelope                   0
+  mechanical                 0
+  violation_types            0
+  violation_codes            0
+  earliest_open_date         0
+  latest_open_date           0
+  property_group             0
+  latitude                   1
+  longitude                  1
+  source_url                 0
+
+Top dropped administrative / non-construction descriptions:
+    853  ARRANGE PREMISE INSPECTION
+    234  STOP/REMOVE NUISANCE
+    204  ARRANGE FOR REINSPECTION REGAR
+    168  PLANS & PERMITS REQ - CONTRCTR
+    160  INSTALL SMOKE DETECTORS
+    159  OWNER OR LICENSED CONTRACTOR
+    152  CUT OR REMOVE HIGH WEEDS
+     95  WORK NOT ALLOWED
+     70  PERMIT REQUIRED - CONTRACTOR
+     66  REPAIR/REPLACE SMOKE DETECTORS
+     58  MICE/RODENTS
+     56  LICENSED BONDED PLMBG CONTRCTR
+     18  PERMIT REQUIRED
+      6  INSTALL EXTRA SMOKE DETECTORS
+      4  SCAVENGER SERVICE
+      3  RELOCATE SMOKE DETECTOR
+      2  PLANS & PERMITS REQUIRED
+      2  LICENSED CONTRACTOR
+      1  DRYER EXHAUST NUISANCE
+      1  STOP NUISANCE TO NEIGHBORS
+      1  VACANT BUILDING - REGISTER
+      1  VACANTBUILDING-REGISTER/SECURE

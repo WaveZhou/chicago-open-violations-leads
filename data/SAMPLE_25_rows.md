@@ -1,4 +1,4 @@
-**Top 25 of 1,265 Chicago properties with OPEN repair-type building violations** (city data pulled 2026-10-13; violations dated after 2026-07-13; one row per address; the first 25 rows of the full file -- ranked by number of open repair items, most recent violation first on ties)
+**Top 25 of 1,224 Chicago properties with OPEN repair-type building violations** (city data pulled 2026-10-22; violations dated after 2026-07-22; one row per address; the first 25 rows of the full file -- ranked by number of open repair items, most recent violation first on ties)
 
 | Address | Open work violations | Main category | Top violation types (first 3) | Latest violation date |
 |---|---:|---|---|---|
@@ -20,12 +20,12 @@
 | 3109 E CHELTENHAM PL | 9 | STRUCTURAL | REPAIR EXTERIOR WALL; REPAIR EXTERIOR STAIR; MAINTAIN WINDOW | 2026-08-10 |
 | 2939 E 95TH ST | 9 | STRUCTURAL | REPAIR EXTERIOR DOOR HARDWARE; REPAIR INTERIOR WALLS/CEILING; REPAIR INTERIOR STAIR SYSTEM | 2026-08-06 |
 | 5300 S DORCHESTER AVE | 9 | STRUCTURAL | REPAIR EXTERIOR WALL; CHIMNEY; CONNECT DOWNSPOUT TO SEWER | 2026-08-03 |
+| 7131 S BENNETT AVE | 8 | STRUCTURAL | REPAIR EXTERIOR DOOR; SCREEN OUTER DOORS, WINDOWS; PARAPET | 2026-10-20 |
+| 651 W ARMITAGE AVE | 8 | STRUCTURAL | REPAIR PORCH SYSTEM; REPAIR FENCE; PARAPET | 2026-10-14 |
+| 6821 S WABASH AVE | 8 | STRUCTURAL | MAINTAIN WINDOW; SCREEN OUTER DOORS, WINDOWS; REPAIR EXTERIOR WALL | 2026-10-13 |
 | 1721 W HENDERSON ST | 8 | STRUCTURAL | CHIMNEY CAPPING; REPAIR EAVES; CHIMNEY | 2026-10-01 |
 | 6702 S CHAPPEL AVE | 8 | STRUCTURAL | REPAIR PORCH SYSTEM; REPAIR WINDOW SILLS; REPAIR INTERIOR STAIR SYSTEM | 2026-10-01 |
 | 6126 S CARPENTER ST | 8 | STRUCTURAL | REPLACE D&H PORCH; REPAIR EXTERIOR STAIR; MAINTAIN WINDOW | 2026-09-30 |
 | 137 S KILBOURN AVE | 8 | STRUCTURAL | REPAIR PORCH SYSTEM; PARAPET & COPING; SCREEN OUTER DOORS, WINDOWS | 2026-09-23 |
-| 3422 N CENTRAL PARK AVE | 8 | STRUCTURAL | REPLCE WINDOW PANES, PLEXGLAS; REPAIR ROOF; REPAIR FENCE | 2026-09-08 |
-| 4253 W WILCOX ST | 8 | STRUCTURAL | REPAIR EXTERIOR STAIR; REPAIR EXTERIOR DOOR FRAME; SCREEN OUTER DOORS, WINDOWS | 2026-08-19 |
-| 2745 W MAYPOLE AVE | 8 | STRUCTURAL | REPAIR CORNICE; REPAIR FENCE; REPAIR WINDOW SILLS | 2026-08-17 |
 
 Data source: City of Chicago Data Portal, dataset 22u3-xenr (Building Violations), filter violation_status = OPEN. Kept only violations that require physical repair work; dropped paperwork items. Public records only -- no owner names, phone numbers or emails. Built with an AI coding agent (Claude Code); every row in the full file links back to the city record.
