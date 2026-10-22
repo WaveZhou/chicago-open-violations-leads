@@ -1,6 +1,6 @@
 # Column dictionary -- FREE edition (15 columns)
 
-One row per property (address). Release 2026-10-13, 1,265 rows. Examples come from the first row of the file.
+One row per property (address). Current release 2026-10-22, 1,224 rows (refreshed weekly; see data/CHANGELOG.md). Examples come from the first row of the file.
 
 | # | Column | Type | Description | Example |
 |---:|---|---|---|---|

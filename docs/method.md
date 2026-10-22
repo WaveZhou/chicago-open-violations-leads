@@ -9,7 +9,7 @@ Built with an AI coding agent (Claude Code); data pulled from the City of Chicag
 - **Dataset:** City of Chicago Data Portal, *Building Violations*, id `22u3-xenr` — <https://data.cityofchicago.org/d/22u3-xenr>
 - **Access:** the public Socrata Open Data API (SODA 2.x), JSON endpoint `https://data.cityofchicago.org/resource/22u3-xenr.json`. No login, no scraping, no API key (anonymous calls are throttled; an app token raises the limit but is not required).
 - **Fields used:** `id, violation_date, violation_status, violation_status_date, violation_code, violation_description, violation_location, inspection_category, department_bureau, address, street_number, street_direction, street_name, street_type, property_group, latitude, longitude`.
-- **Pull date for this release:** 2026-10-13. **Window:** `violation_date > 2026-07-13` (about three months).
+- **Pull date for the current release:** 2026-10-22. **Window:** `violation_date > 2026-07-22` (about three months; both move forward with every weekly refresh — see data/CHANGELOG.md).
 
 ## 2. SoQL queries
 
@@ -22,7 +22,7 @@ https://data.cityofchicago.org/resource/22u3-xenr.json
   ?$select=id,violation_date,violation_status_date,violation_code,violation_description,
            violation_location,inspection_category,department_bureau,address,street_number,
            street_direction,street_name,street_type,property_group,latitude,longitude
-  &$where=violation_status='OPEN' AND violation_date > '2026-07-13T00:00:00'
+  &$where=violation_status='OPEN' AND violation_date > '2026-07-22T00:00:00'
   &$order=violation_date DESC
   &$limit=50000
   &$offset=0
@@ -31,7 +31,7 @@ https://data.cityofchicago.org/resource/22u3-xenr.json
 URL-encoded, ready to paste into a browser (first page):
 
 ```
-https://data.cityofchicago.org/resource/22u3-xenr.json?%24select=id%2Cviolation_date%2Cviolation_status_date%2Cviolation_code%2Cviolation_description%2Cviolation_location%2Cinspection_category%2Cdepartment_bureau%2Caddress%2Cstreet_number%2Cstreet_direction%2Cstreet_name%2Cstreet_type%2Cproperty_group%2Clatitude%2Clongitude&%24where=violation_status%3D%27OPEN%27%20AND%20violation_date%20%3E%20%272026-07-13T00%3A00%3A00%27&%24order=violation_date%20DESC&%24limit=50000&%24offset=0
+https://data.cityofchicago.org/resource/22u3-xenr.json?%24select=id%2Cviolation_date%2Cviolation_status_date%2Cviolation_code%2Cviolation_description%2Cviolation_location%2Cinspection_category%2Cdepartment_bureau%2Caddress%2Cstreet_number%2Cstreet_direction%2Cstreet_name%2Cstreet_type%2Cproperty_group%2Clatitude%2Clongitude&%24where=violation_status%3D%27OPEN%27%20AND%20violation_date%20%3E%20%272026-07-22T00%3A00%3A00%27&%24order=violation_date%20DESC&%24limit=50000&%24offset=0
 ```
 
 Increase `$offset` by the number of rows returned until a page comes back short. For this release the whole window fit in one page: **11,650 raw OPEN rows**. Each request is retried up to 5 times with a growing pause on 5xx / throttle errors.
@@ -39,7 +39,7 @@ Increase `$offset` by the number of rows returned until a page comes back short.
 ### 2b. Sanity count (no download)
 
 ```
-https://data.cityofchicago.org/resource/22u3-xenr.json?$select=count(*)&$where=violation_status='OPEN' AND violation_date > '2026-07-13T00:00:00'
+https://data.cityofchicago.org/resource/22u3-xenr.json?$select=count(*)&$where=violation_status='OPEN' AND violation_date > '2026-07-22T00:00:00'
 ```
 
 The number moves daily as the city adds and closes violations, so it will not equal 11,650 for long.
@@ -102,7 +102,7 @@ MECHANICAL = re.compile(
 
 Known quirks, kept as-is so the published counts are reproducible: the whole alternation is wrapped in `\b…\b`, so truncated stems such as `BALCON`, `ELEVA`, `VENTIL`, `PLUMB` only match when they are a complete word — `BALCONY` or `PLUMBING` do not fire those branches (`PLUMBING` is still dropped because it never matches STRUCTURAL/ENVELOPE). `REPLACE` on its own is dropped in step 1 because the city uses it as a bare placeholder. Plural forms are not matched either: `REPAIR SCREENS`, `REPAIR LINTELS`, `GUTTERS`, `WINDOWS` do not fire the singular branches, and generic wording such as `REPAIR OR REPLACE`, `REPAIR FLOOR` or `BUILDING IN DISREPAIR` matches nothing — together a few hundred genuine repair rows per quarter end up unclassified and dropped, so the kept set under-counts repair work rather than over-counting it. If you change the patterns, re-check the dropped list in the QA report.
 
-For this release the split was: 3,518 kept rows (1,998 STRUCTURAL, 1,520 ENVELOPE); 8,132 dropped. The 22 most frequent **explicitly-dropped (ADMIN)** descriptions are listed in `data/QA_REPORT_2026-07-13.txt` and account for 2,349 of the 8,132 dropped rows; the remainder are MECHANICAL matches (mostly `MAINTAIN OR REPAIR ELECT/HYDRO ELEVA`) and descriptions that match no pattern at all, which are not itemised in that report — the top five are ARRANGE PREMISE INSPECTION (869), STOP/REMOVE NUISANCE (233), ARRANGE FOR REINSPECTION REGAR (201), PLANS & PERMITS REQ - CONTRCTR (181), INSTALL SMOKE DETECTORS (164).
+For the 2026-10-22 release the split was: 3,463 kept rows (1,980 STRUCTURAL, 1,483 ENVELOPE); 7,962 dropped. The 22 most frequent **explicitly-dropped (ADMIN)** descriptions are listed in `data/QA_REPORT_2026-07-22.txt` and account for 2,314 of the 7,962 dropped rows; the remainder are MECHANICAL matches (mostly `MAINTAIN OR REPAIR ELECT/HYDRO ELEVA`) and descriptions that match no pattern at all, which are not itemised in that report — the top five are ARRANGE PREMISE INSPECTION (853), STOP/REMOVE NUISANCE (234), ARRANGE FOR REINSPECTION REGAR (204), PLANS & PERMITS REQ - CONTRCTR (168), INSTALL SMOKE DETECTORS (160).
 
 ## 4. Aggregation — one row per address
 
@@ -123,7 +123,7 @@ Rows are sorted descending by `(structural + envelope, open_work_violation_count
 
 ## 6. Free-edition packaging
 
-`tools/make_free_edition.py --full <FULL.csv> --qa <QA_REPORT.txt> --pull-date 2026-10-13 --docs` reads the 17-column FULL file and writes:
+`tools/make_free_edition.py --full <FULL.csv> --qa <QA_REPORT.txt> --pull-date 2026-10-22 --docs` reads the 17-column FULL file and writes:
 
 - `data/chicago_open_violations_FREE_<date>.csv` — 15 columns, UTF-8 with BOM.
 - `data/chicago_open_violations_FREE_<date>.xlsx` — `Properties` (frozen header, autofilter, `source_url` as a *city record* hyperlink, real date cells), `README`, `Column_Dictionary`, `Stats`.
