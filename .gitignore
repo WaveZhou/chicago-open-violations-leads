@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# Excel lock files
+~$*.xlsx
+~$*.xls
+
+# Local-only material that must never be committed
+drafts/
+*.zip
+*.log
+out/
+tmp/
+scratch/
+
+# Paid-edition builds (sold at the Open Record Data checkout, not published here)
+*Owner_Of_Record*
+*Estate_Of_Parcels*
+*FULL.csv
