@@ -2,7 +2,9 @@
 
 Chicago properties with OPEN structural / exterior building violations — refreshed on Fridays, free, every row links to the city record.
 
-**Current release: 2026-10-13 — 1,265 properties · violations dated after 2026-07-13 · 15 columns · one row per address.** History: [data/CHANGELOG.md](data/CHANGELOG.md).
+<!-- release:start -->
+**Current release: 2026-10-22 — 1,224 properties · violations dated after 2026-07-22 · 15 columns · one row per address.** History: [data/CHANGELOG.md](data/CHANGELOG.md).
+<!-- release:end -->
 
 ## What this is
 
@@ -20,10 +22,12 @@ The Chicago violation files are a list of **properties**, not people: no owner n
 
 | File | What it is |
 |---|---|
-| [chicago_open_violations_FREE_2026-10-13.csv](data/chicago_open_violations_FREE_2026-10-13.csv) | 1,265 rows × 15 columns, UTF-8 with BOM (opens cleanly in Excel, Google Sheets, Numbers) |
-| [chicago_open_violations_FREE_2026-10-13.xlsx](data/chicago_open_violations_FREE_2026-10-13.xlsx) | Same data with filters and frozen header, plus README / Column_Dictionary / Stats sheets; `source_url` is a clickable **city record** link |
+<!-- files:start -->
+| [chicago_open_violations_FREE_2026-10-22.csv](data/chicago_open_violations_FREE_2026-10-22.csv) | 1,224 rows × 15 columns, UTF-8 with BOM (opens cleanly in Excel, Google Sheets, Numbers) |
+| [chicago_open_violations_FREE_2026-10-22.xlsx](data/chicago_open_violations_FREE_2026-10-22.xlsx) | Same data with filters and frozen header, plus README / Column_Dictionary / Stats sheets; `source_url` is a clickable **city record** link |
 | [SAMPLE_25_rows.md](data/SAMPLE_25_rows.md) | The first 25 rows of the CSV — the properties with the most open repair items (ties broken by the most recent violation) — as a markdown table |
-| [QA_REPORT_2026-07-13.txt](data/QA_REPORT_2026-07-13.txt) | Row counts, blank-cell audit and the list of dropped paperwork items from the pull |
+| [QA_REPORT_2026-07-22.txt](data/QA_REPORT_2026-07-22.txt) | Row counts, blank-cell audit and the list of dropped paperwork items from the pull |
+<!-- files:end -->
 | [stats.json](data/stats.json) | Machine-readable summary (all counts measured from the released file) |
 | [CHANGELOG.md](data/CHANGELOG.md) | One entry per pull |
 
@@ -31,12 +35,14 @@ On GitHub, open a file and use **Download raw file** (the icon next to *Raw*).
 
 ## What's in it
 
-- **1,265 properties** with at least one OPEN repair-type violation dated after 2026-07-13 (pulled 2026-10-13; actual violation dates run 2026-07-14 → 2026-10-09).
-- **3,518 kept violation rows** — 1,998 STRUCTURAL, 1,520 ENVELOPE — out of 11,650 OPEN rows the city listed for the window. The other 8,132 rows were not kept, for three different reasons: explicit paperwork and housekeeping items (arrange inspection, register vacant building, smoke detectors, weeds, rodents, permits — the 22 most frequent are itemised in the QA report and add up to 2,349 rows); mechanical items (elevators, boilers, wiring — excluded by design); and descriptions the keyword rules do not classify, which include some generic repair wording (REPAIR OR REPLACE, REPAIR FLOOR, REPAIR SCREENS, REPAIR LINTELS). A property whose only open items fall in those groups is not in this list — see [docs/method.md](docs/method.md).
-- **Primary category:** 1,000 properties STRUCTURAL, 265 ENVELOPE. 566 properties have 3 or more open repair items; the maximum on one address is 13.
+<!-- whats:start -->
+- **1,224 properties** with at least one OPEN repair-type violation dated after 2026-07-22 (pulled 2026-10-22; actual violation dates run 2026-07-23 → 2026-10-21).
+- **3,463 kept violation rows** — 1,980 STRUCTURAL, 1,483 ENVELOPE — out of 11,425 OPEN rows the city listed for the window. The other 7,962 rows were not kept, for three different reasons: explicit paperwork and housekeeping items (arrange inspection, register vacant building, smoke detectors, weeds, rodents, permits — the 22 most frequent are itemised in the QA report and add up to 2,314 rows); mechanical items (elevators, boilers, wiring — excluded by design); and descriptions the keyword rules do not classify, which include some generic repair wording (REPAIR OR REPLACE, REPAIR FLOOR, REPAIR SCREENS, REPAIR LINTELS). A property whose only open items fall in those groups is not in this list — see [docs/method.md](docs/method.md).
+- **Primary category:** 970 properties STRUCTURAL, 254 ENVELOPE. 559 properties have 3 or more open repair items; the maximum on one address is 13.
 - **Ranking:** most structural + envelope work first, then total open items, then most recent — the top of the file is the heaviest work.
-- **15 columns**, no blanks except one address the city has not geocoded (`latitude`/`longitude`).
-- **Most common open items:** REPAIR EXTERIOR WALL (441 properties), REPAIR PORCH SYSTEM (272), REPAIR FENCE (214), REPAIR EXTERIOR STAIR (209), REPAIR INTERIOR WALLS/CEILING (208), REPLCE WINDOW PANES, PLEXGLAS (175), MAINTAIN WINDOW (170), REPAIR/REBUILD GARAGE OR SHED (164), CHIMNEY (131), REPAIR EXTERIOR DOOR (130).
+- **15 columns**, no blanks except `latitude` (1), `longitude` (1) where the city has not geocoded the address.
+- **Most common open items:** REPAIR EXTERIOR WALL (441 properties), REPAIR PORCH SYSTEM (261), REPAIR FENCE (210), REPAIR INTERIOR WALLS/CEILING (198), REPAIR EXTERIOR STAIR (197), REPLCE WINDOW PANES, PLEXGLAS (176), MAINTAIN WINDOW (168), REPAIR/REBUILD GARAGE OR SHED (157), CHIMNEY (136), PARAPET (122).
+<!-- whats:end -->
 
 ## Columns
 
@@ -65,7 +71,7 @@ The exact query URLs, the three classification regexes and the aggregation rules
 
 - **OPEN status lags compliance.** The city marks a violation closed only after a re-inspection, which can take weeks or months after the work is done. Some listed items are already fixed. Click `source_url` to see what the city shows today.
 - **Address-level, not parcel (PIN) level.** One row = one address string as the inspector entered it. A multi-unit building is one row; a corner lot with two addresses can appear twice; there is no owner, PIN or mailing data in this edition.
-- **Three-month window.** Only violations dated after 2026-07-13 are counted. A property with older violations that are still OPEN is not here unless it also has a newer one.
+- **Three-month window.** Only violations dated after the window start (2026-07-22 for the current release) are counted. A property with older violations that are still OPEN is not here unless it also has a newer one.
 - **Keyword classification.** STRUCTURAL / ENVELOPE / dropped is decided by regular expressions on the city's `violation_description` text. It is good, not perfect; a few descriptions are ambiguous. The QA report itemises the explicit paperwork drops; `docs/method.md` explains what else is excluded (mechanical items and unclassified descriptions, including some generic repair wording), so you can judge.
 - **Counts measure items, not dollars.** 9 open items can be nine small things or one collapsing porch written up nine ways.
 - **A moving target.** The city updates the dataset daily. This file is a snapshot and is refreshed on Fridays.
@@ -76,7 +82,9 @@ No phone numbers, no emails, no skip tracing — in any file here. The Chicago v
 
 ## Refresh schedule
 
-Every **Friday**. Each refresh replaces the dated CSV/XLSX in `data/`, updates `stats.json` and the QA report, and adds a CHANGELOG entry with the new counts (older files stay in git history). Current data: the initial pull of Tuesday 2026-10-13. **Next refresh: Friday 2026-10-23.**
+<!-- refresh:start -->
+Every **Friday**. Each refresh replaces the dated CSV/XLSX in `data/`, updates `stats.json` and the QA report, and adds a CHANGELOG entry with the new counts (older files stay in git history). Current data: the pull of Thursday 2026-10-22. **Next refresh: Friday 2026-10-30.**
+<!-- refresh:end -->
 
 ## Requests
 
